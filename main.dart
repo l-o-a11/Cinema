@@ -65,5 +65,20 @@ void actualizarPelicula(List<Map<String, dynamic>> cinema) {
 }
 
 void eliminarPelicula(List<Map<String, dynamic>> cinema) {
-  
+  if (cinema.isEmpty) {
+    print('No hay peliculas para eliminar.');
+    return;
+  }
+
+  stdout.write('Ingrese el índice de la pelicula a eliminar: ');
+  String? input = stdin.readLineSync();
+  int? indice = int.tryParse(input ?? '');
+
+  if (indice == null || indice < 0 || indice >= cinema.length) {
+    print('Índice inválido.');
+    return;
+  }
+
+  cinema.removeAt(indice);
+  print('Pelicula eliminado correctamente.');
 }
