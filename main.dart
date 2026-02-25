@@ -108,6 +108,8 @@ void actualizarPelicula(List<Map<String, dynamic>> cinema) {
     return;
   }
 
+  print("Ingrese los nuevos datos (deje en blanco para mantener el valor actual):");
+
   stdout.write("Nuevo título: ");
   String? nuevoTitulo = stdin.readLineSync();
 
@@ -115,21 +117,31 @@ void actualizarPelicula(List<Map<String, dynamic>> cinema) {
   String? nuevoDirector = stdin.readLineSync();
 
   stdout.write("Nuevo año: ");
-  int? nuevoYear = int.tryParse(stdin.readLineSync() ?? '');
+  String? yearInput = stdin.readLineSync();
 
   stdout.write("Nuevo género: ");
   String? nuevoGenero = stdin.readLineSync();
 
   cinema[indice] = {
-    'titulo': nuevoTitulo ?? cinema[indice]['titulo'],
-    'director': nuevoDirector ?? cinema[indice]['director'],
-    'year': nuevoYear ?? cinema[indice]['year'],
-    'genero': nuevoGenero ?? cinema[indice]['genero']
+    'titulo': (nuevoTitulo == null || nuevoTitulo.trim().isEmpty)
+        ? cinema[indice]['titulo']
+        : nuevoTitulo,
+
+    'director': (nuevoDirector == null || nuevoDirector.trim().isEmpty)
+        ? cinema[indice]['director']
+        : nuevoDirector,
+
+    'year': (yearInput == null || yearInput.trim().isEmpty)
+        ? cinema[indice]['year']
+        : int.tryParse(yearInput) ?? cinema[indice]['year'],
+
+    'genero': (nuevoGenero == null || nuevoGenero.trim().isEmpty)
+        ? cinema[indice]['genero']
+        : nuevoGenero,
   };
 
   print("Película actualizada correctamente:");
 }
-
 void eliminarPelicula(List<Map<String, dynamic>> cinema) {
   if (cinema.isEmpty) {
     print("No hay películas para eliminar.");
