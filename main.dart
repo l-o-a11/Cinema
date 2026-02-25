@@ -5,7 +5,7 @@ void main() {
   List<Map<String, dynamic>> cinema = [];
 
   do {
-    print("\n ===== MENÚ CINEMA ===== ");
+    print(" ===== MENÚ CINEMA ===== ");
     print("1. Agregar pelicula");
     print("2. Listar peliculas");
     print("3. Actualizar pelicula");
@@ -44,7 +44,20 @@ void agregarPelicula(List<Map<String, dynamic>> cinema) {
 }
 
 void listarPeliculas(List<Map<String, dynamic>> cinema) {
-  
+  if (cinema.isEmpty) {
+    print('No hay peliculas registrados.');
+    return;
+  }
+
+  print('--- Lista de peliculas ---');
+  for (int i = 0; i < cinema.length; i++) {
+    print('Índice: $i');
+    print('Título: ${cinema[i]['titulo']}');
+    print('Director: ${cinema[i]['director']}');
+    print('Año de estreno: ${cinema[i]['year']}');
+    print('Genero: ${cinema[i]['genero']}');
+    print('-----------------------');
+  }
 }
 
 void actualizarPelicula(List<Map<String, dynamic>> cinema) {
