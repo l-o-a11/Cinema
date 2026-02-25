@@ -127,7 +127,7 @@ void actualizarPelicula(List<Map<String, dynamic>> cinema) {
     'genero': nuevoGenero ?? cinema[indice]['genero']
   };
 
-  print("Película actualizada correctamente.");
+  print("Película actualizada correctamente:");
 }
 
 void eliminarPelicula(List<Map<String, dynamic>> cinema) {
